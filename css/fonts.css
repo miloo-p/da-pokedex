@@ -1,0 +1,17 @@
+/* --- Press Start 2P (Accents) --- */
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PressStart2P-Regular.ttf") format("woff2");
+  font-display: swap;
+}
+
+/* --- VT323 (Body) --- */
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/VT323-Regular.ttf") format("woff2");
+  font-display: swap;
+}
