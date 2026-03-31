@@ -49,6 +49,76 @@
   --content-max-width: 90rem;
 }
 
+/* //----- Utility Classes -----// */
+
+.d_none {
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+/* -- Flexbox Setup -- */
+.utc_flex-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.utc_flex-dir-row {
+  display: flex;
+}
+
+/* -- Flexbox: Gap -- */
+
+.utc_flex-gap-sm {
+  gap: var(--spacing-sm);
+}
+.utc_flex-gap-md {
+  gap: var(--spacing-md);
+}
+
+/* -- Flexbox: Justify Content (Main Axis) -- */
+.utc_flex-jc-start {
+  justify-content: start;
+}
+
+.utc_flex-jc-end {
+  justify-content: flex-end;
+}
+.utc_flex-jc-center {
+  justify-content: center;
+}
+.utc_flex-jc-sbetween {
+  justify-content: space-between;
+}
+
+.utc_flex-jc-around {
+  justify-content: space-around;
+}
+
+.utc_flex-jc-evenly {
+  justify-content: space-evenly;
+}
+
+/* -- Flexbox: Align Items (Cross Axis) -- */
+.utc_flex-ai-start {
+  align-items: flex-start;
+}
+.utc_flex-ai-center {
+  align-items: center;
+}
+.utc_flex-ai-end {
+  align-items: end;
+}
+
+.utc_flex-ai-sbetween {
+  align-items: space-between;
+}
+
+/* ///////////////////////////////////////////////////////////////////// */
+
 body {
   min-height: 100dvh;
 
@@ -96,4 +166,39 @@ h3 {
   padding-inline: var(--spacing-lg);
 
   margin: 0 auto;
+}
+
+.btn {
+  cursor: pointer;
+  border: 0;
+
+  height: var(--fs-xl);
+  width: var(--fs-xl);
+
+  background: none;
+
+  background-image: url(../assets/icons/search-loupe.svg);
+  background-size: cover;
+}
+
+.header-img {
+  height: var(--fs-xxl);
+}
+
+.complete_header {
+  height: 6rem;
+
+  background-color: var(--clr-bg-main);
+}
+
+.complete_main {
+  flex: 1;
+
+  background-color: var(--clr-bg-surface);
+}
+
+.complete_footer {
+  height: 6rem;
+
+  background-color: var(--clr-bg-main);
 }
