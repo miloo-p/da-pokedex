@@ -145,14 +145,12 @@ h2 {
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
 
-  line-height: 3rem;
-
   color: var(--clr-text-light);
 }
 
 h3 {
   font-family: var(--ff-headline);
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   font-weight: var(--fw-bold);
 
   color: var(--clr-text-main);
@@ -207,5 +205,9 @@ h3 {
   display: grid;
   gap: 2rem;
 
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
+
+.poke-list-item {
+  background-color: var(--clr-bg-shadow);
 }
