@@ -68,6 +68,8 @@ function openDialog(index) {
 
   document.body.classList.add("no-scroll");
   pokeDialogRef.showModal();
+
+  dialogPicTest();
 }
 
 function closeDialog() {
@@ -79,4 +81,18 @@ function closeDialog() {
 
 function closeDialogBubbleProtection(event) {
   event.stopPropagation();
+}
+
+function dialogPicTest() {
+  let dialogPicRef = document.getElementById("dialogPic");
+  let gifURL = loadedPokemon[5].sprites.other.showdown.front_shiny;
+
+  dialogPicRef.innerHTML = `<img src="${gifURL}" class="dialogPicture" alt=""></img>`;
+  audioTest();
+}
+
+function audioTest() {
+  var audio = new Audio("https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1.ogg");
+  audio.volume = 0.05;
+  audio.play();
 }

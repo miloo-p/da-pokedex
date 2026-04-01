@@ -44,8 +44,12 @@
           <div class="utc_flex-dir-row">
             <div class="pokedex-left">
               <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
-                <div class="pokedex-display-inner"></div>
+                <div
+                  id="dialogPic"
+                  class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center"
+                ></div>
               </div>
+              <div class="pokedex-controls"></div>
             </div>
             <div class="pokedex-mid utc_flex-dir-col">
               <div class="pokedex-devider"></div>
@@ -53,7 +57,28 @@
               <div class="pokedex-devider"></div>
             </div>
             <div class="pokedex-right">
-              <div class="pokedex-display"></div>
+              <div class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+                <table class="poke-stats-table">
+                  <tbody class="poke-stats-table">
+                    <tr>
+                      <th scope="row">Height:</th>
+                      <td>2 m</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Weight:</th>
+                      <td>100 kg</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Base experience:</th>
+                      <td>263</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Abilities:</th>
+                      <td>overgrow, chlorophyll</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
               <div
                 class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"

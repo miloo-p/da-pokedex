@@ -49,6 +49,8 @@ dialog {
   height: 30rem;
 
   border: 4px solid var(--clr-bg-main);
+
+  position: relative;
 }
 
 .pokedex-right {
@@ -96,8 +98,8 @@ dialog {
 }
 
 .pokedex-display {
-  width: 18rem;
-  height: 16rem;
+  width: 19rem;
+  height: 18rem;
 
   background-color: var(--clr-bg-main);
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
@@ -113,4 +115,50 @@ dialog {
 .pokedex-nav-btn {
   flex: 1;
   text-wrap: nowrap;
+}
+
+.dialogPicture {
+  height: 11rem;
+}
+
+.poke-stats-table {
+  color: var(--clr-text-light);
+}
+
+tr {
+  padding-inline: var(--spacing-lg);
+}
+
+th {
+  text-wrap: nowrap;
+  text-align: start;
+}
+
+td {
+  text-wrap: nowrap;
+  text-align: end;
+}
+
+.pokedex-controls {
+  height: 2.5rem;
+  width: 7rem;
+  background-color: var(--clr-bg-main);
+  margin-bottom: 6rem;
+
+  position: absolute;
+
+  top: 26rem;
+  left: 12.5rem;
+}
+
+.pokedex-controls::after {
+  content: "";
+
+  height: 2.5rem;
+  width: 7rem;
+  background-color: var(--clr-bg-main);
+
+  position: absolute;
+
+  transform: rotate(90deg);
 }
