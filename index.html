@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="./css/list.css" />
     <link rel="stylesheet" href="./css/detail.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
+
+    <script src="./js/template.js" defer></script>
+    <script src="./js/main.js" defer></script>
   </head>
-  <body>
+  <body onload="init()">
     <header class="complete_header">
       <section class="section-content-wrapper utc_flex-dir-row utc_flex-jc-sbetween utc_flex-ai-center">
         <div class="utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center utc_flex-gap-md">
@@ -33,67 +36,15 @@
         <p>A Pokedex Application created with the help of https://pokeapi.co/</p>
       </section>
       <section class="section-content-wrapper">
-        <div class="poke-grid-container">
+        <div id="pokemon-list-container" class="poke-grid-container">
           <article class="poke-list-item">
             <section class="header__poke-list-item">
-              <h3>Name</h3>
-              <h3>#ID</h3>
+              <h3 id="pokeName">Name</h3>
+              <h3 id="pokeID">#ID</h3>
             </section>
             <section class="main__poke-list-item">
-              <img class="poke-item-picture" src="" alt="" />
-              <div class="poke-item-categories">
-                <img class="categorie-badge" src="" alt="" />
-                <img class="categorie-badge" src="" alt="" />
-              </div>
-            </section>
-          </article>
-          <article class="poke-list-item">
-            <section class="header__poke-list-item">
-              <h3>Name</h3>
-              <h3>#ID</h3>
-            </section>
-            <section class="main__poke-list-item">
-              <img class="poke-item-picture" src="" alt="" />
-              <div class="poke-item-categories">
-                <img class="categorie-badge" src="" alt="" />
-                <img class="categorie-badge" src="" alt="" />
-              </div>
-            </section>
-          </article>
-          <article class="poke-list-item">
-            <section class="header__poke-list-item">
-              <h3>Name</h3>
-              <h3>#ID</h3>
-            </section>
-            <section class="main__poke-list-item">
-              <img class="poke-item-picture" src="" alt="" />
-              <div class="poke-item-categories">
-                <img class="categorie-badge" src="" alt="" />
-                <img class="categorie-badge" src="" alt="" />
-              </div>
-            </section>
-          </article>
-          <article class="poke-list-item">
-            <section class="header__poke-list-item">
-              <h3>Name</h3>
-              <h3>#ID</h3>
-            </section>
-            <section class="main__poke-list-item">
-              <img class="poke-item-picture" src="" alt="" />
-              <div class="poke-item-categories">
-                <img class="categorie-badge" src="" alt="" />
-                <img class="categorie-badge" src="" alt="" />
-              </div>
-            </section>
-          </article>
-          <article class="poke-list-item">
-            <section class="header__poke-list-item">
-              <h3>Name</h3>
-              <h3>#ID</h3>
-            </section>
-            <section class="main__poke-list-item">
-              <img class="poke-item-picture" src="" alt="" />
-              <div class="poke-item-categories">
+              <img id="pokeBigPicture" class="poke-item-picture" src="" alt="" />
+              <div id="pokeCategorieContainer" class="poke-item-categories">
                 <img class="categorie-badge" src="" alt="" />
                 <img class="categorie-badge" src="" alt="" />
               </div>
@@ -101,6 +52,7 @@
           </article>
         </div>
       </section>
+      <button id="btnLoadMore" onclick="loadMorePokemon()">Load More</button>
       <dialog>
         <article class="poke-dialog">
           <section class="header__poke-dialog">

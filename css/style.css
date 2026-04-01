@@ -150,7 +150,7 @@ h2 {
 
 h3 {
   font-family: var(--ff-headline);
-  font-size: var(--fs-base);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-bold);
 
   color: var(--clr-text-main);
@@ -206,8 +206,4 @@ h3 {
   gap: 2rem;
 
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-}
-
-.poke-list-item {
-  background-color: var(--clr-bg-shadow);
 }

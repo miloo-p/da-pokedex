@@ -1,0 +1,24 @@
+.poke-list-item {
+  background-color: var(--clr-bg-shadow);
+
+  padding: var(--spacing-md);
+
+  border-radius: 0.5rem;
+  border: 3px solid var(--clr-border);
+
+  cursor: pointer;
+}
+.poke-list-item:hover {
+  box-shadow:
+    0 0 50px var(--clr-glow-subtle),
+    0 0 20px var(--clr-glow-intense);
+
+  & img {
+    -webkit-filter: drop-shadow(0px 0px 15px #a1a1a159);
+    filter: drop-shadow(0px 0px 15px #cecece48);
+  }
+}
+
+.poke-ID {
+  color: var(--clr-accent-hover);
+}
