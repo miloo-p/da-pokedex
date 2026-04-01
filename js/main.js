@@ -62,3 +62,21 @@ function loadMorePokemon() {
   getPokemonFromAPI();
   renderPokemons();
 }
+
+function openDialog(index) {
+  let pokeDialogRef = document.getElementById("pokeDialog");
+
+  document.body.classList.add("no-scroll");
+  pokeDialogRef.showModal();
+}
+
+function closeDialog() {
+  let pokeDialogRef = document.getElementById("pokeDialog");
+
+  document.body.classList.remove("no-scroll");
+  pokeDialogRef.close();
+}
+
+function closeDialogBubbleProtection(event) {
+  event.stopPropagation();
+}

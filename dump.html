@@ -1,0 +1,44 @@
+<dialog id="pokeDialog" onclick="closeDialog()">
+  <article class="poke-dialog" onclick="closeDialogBubbleProtection(event)">
+    <section class="header__poke-dialog">
+      <h2>Name</h2>
+      <h2>#ID</h2>
+    </section>
+    <section class="main__poke-dialog">
+      <img class="poke-picture" src="" alt="" />
+      <div class="poke-categories">
+        <img class="categorie-badge" src="" alt="" />
+        <img class="categorie-badge" src="" alt="" />
+      </div>
+      <div class="poke-meta">
+        <div class="poke-meta-nav">
+          <button>Main</button><button>Stats</button><button>Evo Chain</button>
+          <div id="meta-main">
+            <table class="poke-stats-table">
+              <tbody>
+                <tr>
+                  <th scope="row">Height</th>
+                  <td>: 2 m</td>
+                </tr>
+                <tr>
+                  <th scope="row">Weight</th>
+                  <td>: 100 kg</td>
+                </tr>
+                <tr>
+                  <th scope="row">Base experience</th>
+                  <td>: 263</td>
+                </tr>
+                <tr>
+                  <th scope="row">Abilities</th>
+                  <td>: overgrow, chlorophyll</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="meta-stats"></div>
+          <div id="meta-evo-chain"></div>
+        </div>
+      </div>
+    </section>
+  </article>
+</dialog>
