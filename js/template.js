@@ -40,32 +40,12 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, Pok
             </div>
             <div class="pokedex-right">
               <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-                <table class="poke-main-table">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Height:</th>
-                      <td>2 m</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Weight:</th>
-                      <td>100 kg</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Base experience:</th>
-                      <td>263</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Abilities:</th>
-                      <td>overgrow, chlorophyll</td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
 
               <div
                 class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"
               >
-                <button class="pokedex-nav-btn">Main</button>
+                <button class="pokedex-nav-btn" onclick="renderDetaileMain(${i})">Main</button>
                 <button class="pokedex-nav-btn">Stats</button>
                 <button class="pokedex-nav-btn">Evo Chain</button>
               </div>
@@ -75,25 +55,25 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, Pok
   `;
 }
 
-function templatePokedexDisplayToggle(i, pokeHeight, pokeWeight, pokeExp, pokeAbilities) {
+function templatePokedexDisplayMain(i, pokeHeight, pokeWeight, pokeExp, pokeAbilities) {
   return `
                 <table class="poke-main-table">
                   <tbody>
                     <tr>
                       <th scope="row">Height:</th>
-                      <td>2 m</td>
+                      <td>${pokeHeight} m</td>
                     </tr>
                     <tr>
                       <th scope="row">Weight:</th>
-                      <td>100 kg</td>
+                      <td>${pokeWeight} kg</td>
                     </tr>
                     <tr>
                       <th scope="row">Base experience:</th>
-                      <td>263</td>
+                      <td>${pokeExp}</td>
                     </tr>
                     <tr>
                       <th scope="row">Abilities:</th>
-                      <td>overgrow, chlorophyll</td>
+                      <td>${pokeAbilities}</td>
                     </tr>
                   </tbody>
                 </table>

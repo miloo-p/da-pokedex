@@ -117,17 +117,27 @@ function renderDetaileMain(pokemonIndex) {
   const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
   const currentPokemon = loadedPokemon[pokemonIndex];
 
-  let pokeHeight = capitalizeFirstLetter(currentPokemon.name);
-  let pokeWeight = currentPokemon.id;
-  let pokeExp = currentPokemon.sprites.other.showdown.front_shiny;
-  let pokeAbilities = currentPokemon.main;
+  let pokeHeight = currentPokemon.height;
+  let pokeWeight = currentPokemon.weight;
+  let pokeExp = currentPokemon.base_experience;
+  let pokeAbilities = getPokemonAbilities(pokemonIndex);
 
-  showDetaileMainRef.innerHTML = templatePokedexDisplayToggle(
+  showDetaileMainRef.innerHTML = templatePokedexDisplayMain(
     pokemonIndex,
     pokeHeight,
     pokeWeight,
     pokeExp,
     pokeAbilities,
   );
-  getPokemonCrie(pokemonIndex);
+}
+
+function getPokemonAbilities(pokemonIndex) {
+  const currentPokemon = loadedPokemon[pokemonIndex];
+  const abilitiesArray = currentPokemon.abilities;
+  let extractedAbilities = [];
+
+  abilitiesArray.forEach(function (abilityObject) {
+    extractedAbilities.push(abilityObject.ability.name);
+  });
+  return extractedAbilities.join(", ");
 }
