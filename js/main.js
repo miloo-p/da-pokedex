@@ -1,5 +1,6 @@
 let loadedPokemon = [];
 let nextUrl = "https://pokeapi.co/api/v2/pokemon?limit=20";
+let renderedPokemonCounter = 0;
 
 async function init() {
   await getPokemonFromAPI();
@@ -41,9 +42,8 @@ async function getPokemonDetailFromAPI(url) {
 
 function renderPokemons() {
   const showPokemonListRef = document.getElementById("pokemon-list-container");
-  showPokemonListRef.innerHTML = "";
 
-  for (let i = 0; i < loadedPokemon.length; i++) {
+  for (let i = renderedPokemonCounter; i < loadedPokemon.length; i++) {
     const currentPokemon = loadedPokemon[i];
 
     let pokeName = capitalizeFirstLetter(currentPokemon.name);
@@ -52,14 +52,16 @@ function renderPokemons() {
 
     showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic);
   }
+
+  renderedPokemonCounter = loadedPokemon.length;
 }
 
 function capitalizeFirstLetter(param) {
   return String(param).charAt(0).toUpperCase() + String(param).slice(1);
 }
 
-function loadMorePokemon() {
-  getPokemonFromAPI();
+async function loadMorePokemon() {
+  await getPokemonFromAPI();
   renderPokemons();
 }
 
