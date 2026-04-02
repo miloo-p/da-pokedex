@@ -18,3 +18,84 @@ function templatePokemonCard(i, PokeName, PokeID, PokePic) {
           </article>
   `;
 }
+
+function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, PokeStats) {
+  return `
+        <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
+          <div class="utc_flex-dir-row">
+            <div class="pokedex-left">
+              <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+                <div
+                  id="dialogPic"
+                  class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+                  <img src="${animPokePic}" class="dialogPicture" alt=""></img>
+                </div>
+              </div>
+              <div class="pokedex-controls"></div>
+            </div>
+            <div class="pokedex-mid utc_flex-dir-col">
+              <div class="pokedex-devider"></div>
+              <div class="pokedex-devider"></div>
+              <div class="pokedex-devider"></div>
+            </div>
+            <div class="pokedex-right">
+              <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+                <table class="poke-main-table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Height:</th>
+                      <td>2 m</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Weight:</th>
+                      <td>100 kg</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Base experience:</th>
+                      <td>263</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Abilities:</th>
+                      <td>overgrow, chlorophyll</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div
+                class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"
+              >
+                <button class="pokedex-nav-btn">Main</button>
+                <button class="pokedex-nav-btn">Stats</button>
+                <button class="pokedex-nav-btn">Evo Chain</button>
+              </div>
+            </div>
+          </div>
+        </article>
+  `;
+}
+
+function templatePokedexDisplayToggle(i, pokeHeight, pokeWeight, pokeExp, pokeAbilities) {
+  return `
+                <table class="poke-main-table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Height:</th>
+                      <td>2 m</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Weight:</th>
+                      <td>100 kg</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Base experience:</th>
+                      <td>263</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Abilities:</th>
+                      <td>overgrow, chlorophyll</td>
+                    </tr>
+                  </tbody>
+                </table>
+   `;
+}

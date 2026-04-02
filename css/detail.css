@@ -1,5 +1,5 @@
 dialog {
-  padding: 0;
+  padding: var(--spacing-md);
 }
 
 .poke-dialog {
@@ -121,7 +121,7 @@ dialog {
   height: 11rem;
 }
 
-.poke-stats-table {
+.poke-main-table {
   color: var(--clr-text-light);
 }
 

@@ -65,17 +65,38 @@ async function loadMorePokemon() {
   renderPokemons();
 }
 
+function renderDetailedDialoge(pokemonIndex) {
+  const showDetailedDialogeRef = document.getElementById("pokeDialoge");
+  const currentPokemon = loadedPokemon[pokemonIndex];
+
+  let pokeName = capitalizeFirstLetter(currentPokemon.name);
+  let pokeID = currentPokemon.id;
+  let animPokePic = currentPokemon.sprites.other.showdown.front_shiny;
+  let PokeMain = currentPokemon.main;
+  let PokeStats = currentPokemon.stats;
+
+  showDetailedDialogeRef.innerHTML = templateDetailedDialoge(
+    pokemonIndex,
+    pokeName,
+    pokeID,
+    animPokePic,
+    PokeMain,
+    PokeStats,
+  );
+  getPokemonCrie(pokemonIndex);
+}
+
 function openDialog(index) {
-  let pokeDialogRef = document.getElementById("pokeDialog");
+  let pokeDialogRef = document.getElementById("pokeDialoge");
 
   document.body.classList.add("no-scroll");
-  pokeDialogRef.showModal();
 
-  dialogPicTest();
+  pokeDialogRef.showModal();
+  renderDetailedDialoge(index);
 }
 
 function closeDialog() {
-  let pokeDialogRef = document.getElementById("pokeDialog");
+  let pokeDialogRef = document.getElementById("pokeDialoge");
 
   document.body.classList.remove("no-scroll");
   pokeDialogRef.close();
@@ -85,16 +106,28 @@ function closeDialogBubbleProtection(event) {
   event.stopPropagation();
 }
 
-function dialogPicTest() {
-  let dialogPicRef = document.getElementById("dialogPic");
-  let gifURL = loadedPokemon[5].sprites.other.showdown.front_shiny;
-
-  dialogPicRef.innerHTML = `<img src="${gifURL}" class="dialogPicture" alt=""></img>`;
-  audioTest();
-}
-
-function audioTest() {
-  var audio = new Audio("https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1.ogg");
+function getPokemonCrie(pokemonIndex) {
+  const currentPokemon = loadedPokemon[pokemonIndex];
+  var audio = new Audio(currentPokemon.cries.latest);
   audio.volume = 0.05;
   audio.play();
+}
+
+function renderDetaileMain(pokemonIndex) {
+  const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
+  const currentPokemon = loadedPokemon[pokemonIndex];
+
+  let pokeHeight = capitalizeFirstLetter(currentPokemon.name);
+  let pokeWeight = currentPokemon.id;
+  let pokeExp = currentPokemon.sprites.other.showdown.front_shiny;
+  let pokeAbilities = currentPokemon.main;
+
+  showDetaileMainRef.innerHTML = templatePokedexDisplayToggle(
+    pokemonIndex,
+    pokeHeight,
+    pokeWeight,
+    pokeExp,
+    pokeAbilities,
+  );
+  getPokemonCrie(pokemonIndex);
 }
