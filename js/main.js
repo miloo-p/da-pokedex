@@ -51,6 +51,7 @@ function renderPokemons() {
     let pokePic = currentPokemon.sprites.other["official-artwork"].front_default;
 
     showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic);
+    getPokemonTypes(i);
   }
 
   renderedPokemonCounter = loadedPokemon.length;
@@ -140,4 +141,16 @@ function getPokemonAbilities(pokemonIndex) {
     extractedAbilities.push(abilityObject.ability.name);
   });
   return extractedAbilities.join(", ");
+}
+
+function getPokemonTypes(pokemonIndex) {
+  const showPokemonTypesRef = document.getElementById(`pokeCategorieContainer-${pokemonIndex}`);
+  const currentPokemon = loadedPokemon[pokemonIndex];
+  const typesArray = currentPokemon.types;
+
+  typesArray.forEach(function (typeObect) {
+    let typeName = typeObect.type.name;
+
+    showPokemonTypesRef.innerHTML += templatePokedexDisplaTypes(typeName);
+  });
 }
