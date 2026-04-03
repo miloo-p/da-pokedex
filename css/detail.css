@@ -1,5 +1,17 @@
 dialog {
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg);
+
+  background-image: url(../assets/img/landscape.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: none;
+
+  &::backdrop {
+    backdrop-filter: blur(0.25rem);
+    background-color: var(--clr-transparent-shadow);
+  }
 }
 
 .poke-dialog {
