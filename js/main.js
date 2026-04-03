@@ -57,6 +57,23 @@ function renderPokemons() {
   renderedPokemonCounter = loadedPokemon.length;
 }
 
+function renderPokemons() {
+  const showPokemonListRef = document.getElementById("pokemon-list-container");
+
+  for (let i = renderedPokemonCounter; i < loadedPokemon.length; i++) {
+    const currentPokemon = loadedPokemon[i];
+
+    let pokeName = capitalizeFirstLetter(currentPokemon.name);
+    let pokeID = currentPokemon.id;
+    let pokePic = currentPokemon.sprites.other["official-artwork"].front_default;
+    let pokeTypes = getPokemonTypes(i);
+
+    showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic, pokeTypes);
+  }
+
+  renderedPokemonCounter = loadedPokemon.length;
+}
+
 function capitalizeFirstLetter(param) {
   return String(param).charAt(0).toUpperCase() + String(param).slice(1);
 }
@@ -73,20 +90,17 @@ function renderDetailedDialoge(pokemonIndex) {
   let pokeName = capitalizeFirstLetter(currentPokemon.name);
   let pokeID = currentPokemon.id;
   let animPokePic = currentPokemon.sprites.other.showdown.front_shiny;
-  let PokeMain = currentPokemon.main;
-  let PokeStats = currentPokemon.stats;
+  let pokeTypes = getPokemonTypes(pokemonIndex);
 
   showDetailedDialogeRef.innerHTML = templateDetailedDialoge(
     pokemonIndex,
     pokeName,
     pokeID,
     animPokePic,
-    PokeMain,
-    PokeStats,
+    pokeTypes,
   );
 
   renderDetaileMain(pokemonIndex);
-
   getPokemonCrie(pokemonIndex);
 }
 
@@ -168,13 +182,15 @@ function getPokemonAbilities(pokemonIndex) {
 }
 
 function getPokemonTypes(pokemonIndex) {
-  const showPokemonTypesRef = document.getElementById(`pokeCategorieContainer-${pokemonIndex}`);
   const currentPokemon = loadedPokemon[pokemonIndex];
   const typesArray = currentPokemon.types;
 
+  let typesHTML = "";
+
   typesArray.forEach(function (typeObect) {
     let typeName = typeObect.type.name;
-
-    showPokemonTypesRef.innerHTML += templatePokedexDisplaTypes(typeName);
+    typesHTML += templatePokedexDisplaTypes(typeName);
   });
+
+  return typesHTML;
 }

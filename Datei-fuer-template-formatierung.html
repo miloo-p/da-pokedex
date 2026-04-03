@@ -1,44 +1,32 @@
-<dialog id="pokeDialog" onclick="closeDialog()">
-  <article class="poke-dialog" onclick="closeDialogBubbleProtection(event)">
-    <section class="header__poke-dialog">
-      <h2>Name</h2>
-      <h2>#ID</h2>
-    </section>
-    <section class="main__poke-dialog">
-      <img class="poke-picture" src="" alt="" />
-      <div class="poke-categories">
-        <img class="categorie-badge" src="" alt="" />
-        <img class="categorie-badge" src="" alt="" />
-      </div>
-      <div class="poke-meta">
-        <div class="poke-meta-nav">
-          <button>Main</button><button>Stats</button><button>Evo Chain</button>
-          <div id="meta-main">
-            <table class="poke-stats-table">
-              <tbody>
-                <tr>
-                  <th scope="row">Height</th>
-                  <td>: 2 m</td>
-                </tr>
-                <tr>
-                  <th scope="row">Weight</th>
-                  <td>: 100 kg</td>
-                </tr>
-                <tr>
-                  <th scope="row">Base experience</th>
-                  <td>: 263</td>
-                </tr>
-                <tr>
-                  <th scope="row">Abilities</th>
-                  <td>: overgrow, chlorophyll</td>
-                </tr>
-              </tbody>
-            </table>
+        <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
+          <div class="utc_flex-dir-row">
+            <div class="pokedex-left">
+              <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+                <div
+                  id="dialogPic"
+                  class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+                  <img src="${animPokePic}" class="dialogPicture" alt=""></img>
+                </div>
+              </div>
+              <div class="pokedex-controls"></div>
+            </div>
+            <div class="pokedex-mid utc_flex-dir-col">
+            </div>
+            <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+                        <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-center utc_flex-gap-sm">
+              <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
+              <h3 id="pokeName-${i}">${pokeName}</h3>
+              </div>
+              <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+              </div>
+
+              <div
+                class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"
+              >
+                <button class="pokedex-nav-btn" onclick="renderDetaileMain(${i})">Main</button>
+                <button class="pokedex-nav-btn" onclick="renderDetaileStats(${i})">Stats</button>
+                <button class="pokedex-nav-btn">Evo Chain</button>
+              </div>
+            </div>
           </div>
-          <div id="meta-stats"></div>
-          <div id="meta-evo-chain"></div>
-        </div>
-      </div>
-    </section>
-  </article>
-</dialog>
+        </article>

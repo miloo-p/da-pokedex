@@ -1,4 +1,4 @@
-function templatePokemonCard(i, PokeName, PokeID, PokePic) {
+function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes) {
   return `
           <article class="poke-list-item" onclick="openDialog(${i})">
 
@@ -9,15 +9,18 @@ function templatePokemonCard(i, PokeName, PokeID, PokePic) {
 
             <section class="main__poke-list-item-${i}">
               <img id="pokeBigPicture-${i}" class="poke-item-picture" src="${PokePic}" alt="Bild von ${PokeName}" />
-              <div id="pokeCategorieContainer-${i}" class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+              
+              <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+                ${pokeTypes}
               </div>
+
             </section>
 
           </article>
   `;
 }
 
-function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, PokeStats) {
+function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
   return `
         <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
           <div class="utc_flex-dir-row">
@@ -33,7 +36,14 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, Pok
             </div>
             <div class="pokedex-mid utc_flex-dir-col">
             </div>
-            <div class="pokedex-right">
+            <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+                        <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-gap-sm">
+              <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
+              <h3 id="pokeName-${i}">${pokeName}</h3>
+              <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+                ${pokeTypes}
+              </div>
+              </div>
               <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
               </div>
 
