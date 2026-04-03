@@ -102,7 +102,6 @@ function renderDetailedDialoge(pokemonIndex) {
   );
 
   renderDetaileMain(pokemonIndex);
-  getPokemonCrie(pokemonIndex);
 }
 
 function openDialog(index) {
@@ -114,6 +113,7 @@ function openDialog(index) {
 
   pokeDialogRef.showModal();
   renderDetailedDialoge(currentPokemonIndex);
+  getPokemonCrie(currentPokemonIndex);
 }
 
 function closeDialog() {
