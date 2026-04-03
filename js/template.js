@@ -32,9 +32,6 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, Pok
               <div class="pokedex-controls"></div>
             </div>
             <div class="pokedex-mid utc_flex-dir-col">
-              <div class="pokedex-devider"></div>
-              <div class="pokedex-devider"></div>
-              <div class="pokedex-devider"></div>
             </div>
             <div class="pokedex-right">
               <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
@@ -44,7 +41,7 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, PokeMain, Pok
                 class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"
               >
                 <button class="pokedex-nav-btn" onclick="renderDetaileMain(${i})">Main</button>
-                <button class="pokedex-nav-btn">Stats</button>
+                <button class="pokedex-nav-btn" onclick="renderDetaileStats(${i})">Stats</button>
                 <button class="pokedex-nav-btn">Evo Chain</button>
               </div>
             </div>
@@ -76,6 +73,44 @@ function templatePokedexDisplayMain(i, pokeHeight, pokeWeight, pokeExp, pokeAbil
                   </tbody>
                 </table>
    `;
+}
+
+function templatePokedexDisplayStats(i) {
+  return `
+      <div class="poke-stat-table">
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">HP</p>
+          <div class="stat-bar-bg"><div id="bar-hp-${i}" class="stat-bar-fill"></div></div>
+        </div>
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">ATK</p>
+          <div class="stat-bar-bg"><div id="bar-atk-${i}" class="stat-bar-fill"></div></div>
+        </div>
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">DEF</p>
+          <div class="stat-bar-bg"><div id="bar-def-${i}" class="stat-bar-fill"></div></div>
+        </div>
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">SP-ATK</p>
+          <div class="stat-bar-bg"><div id="bar-spatk-${i}" class="stat-bar-fill"></div></div>
+        </div>
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">SP-DEF</p>
+          <div class="stat-bar-bg"><div id="bar-spdef-${i}" class="stat-bar-fill"></div></div>
+        </div>
+        
+        <div class="display-stat stat-row">
+          <p class="stat-label">SPEED</p>
+          <div class="stat-bar-bg"><div id="bar-speed-${i}" class="stat-bar-fill"></div></div>
+        </div>
+
+      </div>
+  `;
 }
 
 function templatePokedexDisplaTypes(typeName) {
