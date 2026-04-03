@@ -40,10 +40,10 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
             <div class="pokedex-mid utc_flex-dir-col">
             </div>
             <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
-                        <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-gap-sm">
+                        <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm">
               <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
               <h3 id="pokeName-${i}">${pokeName}</h3>
-              <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+              <div class="poke-dialog-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
                 ${pokeTypes}
               </div>
               </div>

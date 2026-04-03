@@ -23,16 +23,6 @@ dialog {
   padding: var(--spacing-md);
 }
 
-.display-pokemon-ident {
-  background-color: var(--clr-bg-main);
-  border-radius: 0.5rem;
-
-  padding: var(--spacing-sm) var(--spacing-md);
-  & h3 {
-    color: var(--clr-text-light);
-  }
-}
-
 .pokedex-left {
   position: relative;
   background-color: var(--clr-accent);
@@ -252,4 +242,22 @@ td {
   height: 100%;
   background-color: var(--clr-text-light);
   border-radius: 1rem;
+}
+
+.poke-dialog-categories {
+  padding: var(--spacing-sm);
+  height: 100%;
+  & img {
+    height: 3rem;
+  }
+}
+
+.display-pokemon-ident {
+  background-color: var(--clr-bg-main);
+  border-radius: 0.5rem;
+
+  padding: var(--spacing-sm) var(--spacing-md);
+  & h3 {
+    color: var(--clr-text-light);
+  }
 }
