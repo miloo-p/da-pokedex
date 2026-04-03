@@ -203,6 +203,8 @@ function changeDialogPokemon(position) {
 
   if (currentPokemonIndex < 0) {
     currentPokemonIndex = 0;
+  } else if (currentPokemonIndex == loadedPokemon.length) {
+    currentPokemonIndex = loadedPokemon.length - 1;
   }
 
   renderDetailedDialoge(currentPokemonIndex);
