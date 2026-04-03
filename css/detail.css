@@ -12,12 +12,17 @@ dialog {
 }
 
 .display-pokemon-ident {
+  background-color: var(--clr-bg-main);
+  border-radius: 0.5rem;
+
+  padding: var(--spacing-sm) var(--spacing-md);
   & h3 {
-    color: var(--clr-bg-main);
+    color: var(--clr-text-light);
   }
 }
 
 .pokedex-left {
+  position: relative;
   background-color: var(--clr-accent);
 
   width: 20rem;
@@ -32,6 +37,22 @@ dialog {
   padding: var(--spacing-sm);
 }
 
+.pokedex-left::before {
+  position: absolute;
+  content: "";
+
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+
+  background-color: #ffcc00;
+
+  top: 1rem;
+  left: 6rem;
+
+  box-shadow: 1.8rem 0 0 0 #0db63f;
+}
+
 .pokedex-left::after {
   position: absolute;
 
@@ -44,8 +65,8 @@ dialog {
   border-radius: 50%;
   border: 4px solid var(--clr-bg-main);
 
-  top: 2.5rem;
-  left: 2.5rem;
+  top: 1rem;
+  left: 1rem;
 }
 
 .pokedex-mid {
@@ -110,17 +131,31 @@ dialog {
   background-color: var(--clr-bg-main);
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 
-  margin: 3.5rem auto;
+  margin: 3rem auto;
   margin-bottom: 0;
 }
 
 .pokedex-button-nav {
-  margin-top: 1rem;
+  margin-top: 5rem;
+}
+
+.pokedex-picture-btn {
+  font-size: var(--fs-lg);
+  line-height: 1;
+
+  background: none;
+  border: none;
+
+  color: var(--clr-text-muted);
+  padding-inline: var(--spacing-sm);
+
+  cursor: pointer;
 }
 
 .pokedex-nav-btn {
   flex: 1;
   text-wrap: nowrap;
+  cursor: pointer;
 }
 
 .dialogPicture {
@@ -151,26 +186,29 @@ td {
 
 .pokedex-controls {
   height: 2.5rem;
-  width: 7rem;
+  width: 6.5rem;
   background-color: var(--clr-bg-main);
-  margin-bottom: 6rem;
 
   position: absolute;
 
-  top: 26rem;
-  left: 12.5rem;
+  bottom: 2.5rem;
+  right: 2.5rem;
+
+  border-radius: 0.2rem;
 }
 
 .pokedex-controls::after {
   content: "";
-
-  height: 2.5rem;
-  width: 7rem;
-  background-color: var(--clr-bg-main);
-
   position: absolute;
 
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--clr-bg-main);
   transform: rotate(90deg);
+  border-radius: 0.2rem;
 }
 
 .poke-stat-table {

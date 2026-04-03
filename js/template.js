@@ -32,7 +32,10 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
                   <img src="${animPokePic}" class="dialogPicture" alt=""></img>
                 </div>
               </div>
-              <div class="pokedex-controls"></div>
+              <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">
+              <button class="pokedex-picture-btn"><</button>
+              <button class="pokedex-picture-btn">></button>
+              </div>
             </div>
             <div class="pokedex-mid utc_flex-dir-col">
             </div>
