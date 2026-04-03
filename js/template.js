@@ -29,7 +29,7 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
                 <div
                   id="dialogPic"
                   class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-                  <img src="${animPokePic}" class="dialogPicture" alt=""></img>
+                  <img src="${animPokePic}" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})"></img>
                 </div>
               </div>
               <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">

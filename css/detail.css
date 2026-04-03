@@ -160,6 +160,7 @@ dialog {
 
 .dialogPicture {
   height: 11rem;
+  cursor: pointer;
 }
 
 .poke-main-table {
