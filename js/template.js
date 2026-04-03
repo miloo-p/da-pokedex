@@ -33,8 +33,8 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
                 </div>
               </div>
               <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">
-              <button class="pokedex-picture-btn"><</button>
-              <button class="pokedex-picture-btn">></button>
+              <button class="pokedex-picture-btn" onclick="changeDialogPokemon(-1)"><</button>
+              <button class="pokedex-picture-btn" onclick="changeDialogPokemon(+1)">></button>
               </div>
             </div>
             <div class="pokedex-mid utc_flex-dir-col">

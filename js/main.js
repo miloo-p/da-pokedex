@@ -1,6 +1,7 @@
 let loadedPokemon = [];
 let nextUrl = "https://pokeapi.co/api/v2/pokemon?limit=20";
 let renderedPokemonCounter = 0;
+let currentPokemonIndex = 0;
 
 async function init() {
   await getPokemonFromAPI();
@@ -109,8 +110,10 @@ function openDialog(index) {
 
   document.body.classList.add("no-scroll");
 
+  currentPokemonIndex = index;
+
   pokeDialogRef.showModal();
-  renderDetailedDialoge(index);
+  renderDetailedDialoge(currentPokemonIndex);
 }
 
 function closeDialog() {
@@ -193,4 +196,14 @@ function getPokemonTypes(pokemonIndex) {
   });
 
   return typesHTML;
+}
+
+function changeDialogPokemon(position) {
+  currentPokemonIndex += position;
+
+  if (currentPokemonIndex < 0) {
+    currentPokemonIndex = 0;
+  }
+
+  renderDetailedDialoge(currentPokemonIndex);
 }
