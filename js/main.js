@@ -1,6 +1,6 @@
 let loadedPokemon = [];
+let currentDisplayedPokemon = [];
 let nextUrl = "https://pokeapi.co/api/v2/pokemon?limit=20";
-let renderedPokemonCounter = 0;
 let currentPokemonIndex = 0;
 
 async function init() {
@@ -12,7 +12,6 @@ async function getPokemonFromAPI() {
   try {
     let pokemonAsHTTPResponse = await fetch(nextUrl);
     let pokemon = await pokemonAsHTTPResponse.json();
-
     nextUrl = pokemon.next;
 
     for (let i = 0; i < pokemon.results.length; i++) {
@@ -24,6 +23,7 @@ async function getPokemonFromAPI() {
       }
     }
 
+    currentDisplayedPokemon = loadedPokemon;
     console.log("Aktueller Speicher:", loadedPokemon);
   } catch (error) {
     console.log("Fehler in getPokemonFromAPI:", error);
@@ -34,35 +34,30 @@ async function getPokemonDetailFromAPI(url) {
   try {
     let pokemonDetailAsHTTPResponse = await fetch(url);
     let pokemonDetail = await pokemonDetailAsHTTPResponse.json();
-
     return pokemonDetail;
   } catch (error) {
     console.log("Fehler in getPokemonDetailFromAPI:", error);
   }
 }
 
-function renderPokemons() {
-  const showPokemonListRef = document.getElementById("pokemon-list-container");
+function filterPokemon() {
+  let search = document.getElementById("searchInput").value.toLowerCase();
 
-  for (let i = renderedPokemonCounter; i < loadedPokemon.length; i++) {
-    const currentPokemon = loadedPokemon[i];
-
-    let pokeName = capitalizeFirstLetter(currentPokemon.name);
-    let pokeID = currentPokemon.id;
-    let pokePic = currentPokemon.sprites.other["official-artwork"].front_default;
-
-    showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic);
-    getPokemonTypes(i);
+  if (search.length >= 3) {
+    currentDisplayedPokemon = loadedPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(search));
+  } else {
+    currentDisplayedPokemon = loadedPokemon;
   }
 
-  renderedPokemonCounter = loadedPokemon.length;
+  renderPokemons();
 }
 
 function renderPokemons() {
   const showPokemonListRef = document.getElementById("pokemon-list-container");
+  showPokemonListRef.innerHTML = "";
 
-  for (let i = renderedPokemonCounter; i < loadedPokemon.length; i++) {
-    const currentPokemon = loadedPokemon[i];
+  for (let i = 0; i < currentDisplayedPokemon.length; i++) {
+    const currentPokemon = currentDisplayedPokemon[i];
 
     let pokeName = capitalizeFirstLetter(currentPokemon.name);
     let pokeID = currentPokemon.id;
@@ -71,8 +66,6 @@ function renderPokemons() {
 
     showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic, pokeTypes);
   }
-
-  renderedPokemonCounter = loadedPokemon.length;
 }
 
 function capitalizeFirstLetter(param) {
@@ -81,13 +74,17 @@ function capitalizeFirstLetter(param) {
 
 async function loadMorePokemon() {
   showLoadingAnimation();
+
+  let searchInput = document.getElementById("searchInput");
+  if (searchInput) searchInput.value = "";
+
   await getPokemonFromAPI();
   renderPokemons();
 }
 
 function renderDetailedDialoge(pokemonIndex) {
   const showDetailedDialogeRef = document.getElementById("pokeDialoge");
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
 
   let pokeName = capitalizeFirstLetter(currentPokemon.name);
   let pokeID = currentPokemon.id;
@@ -109,7 +106,6 @@ function openDialog(index) {
   let pokeDialogRef = document.getElementById("pokeDialoge");
 
   document.body.classList.add("no-scroll");
-
   currentPokemonIndex = index;
 
   pokeDialogRef.showModal();
@@ -129,7 +125,7 @@ function closeDialogBubbleProtection(event) {
 }
 
 function getPokemonCrie(pokemonIndex) {
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
   let audio = new Audio(currentPokemon.cries.latest);
   audio.volume = 0.05;
   audio.play();
@@ -137,7 +133,7 @@ function getPokemonCrie(pokemonIndex) {
 
 function renderDetaileMain(pokemonIndex) {
   const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
 
   let pokeHeight = currentPokemon.height;
   let pokeWeight = currentPokemon.weight;
@@ -155,7 +151,7 @@ function renderDetaileMain(pokemonIndex) {
 
 function renderDetaileStats(pokemonIndex) {
   const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
 
   showDetaileMainRef.innerHTML = templatePokedexDisplayStats(pokemonIndex);
 
@@ -175,7 +171,7 @@ function renderDetaileStats(pokemonIndex) {
 }
 
 function getPokemonAbilities(pokemonIndex) {
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
   const abilitiesArray = currentPokemon.abilities;
   let extractedAbilities = [];
 
@@ -186,7 +182,7 @@ function getPokemonAbilities(pokemonIndex) {
 }
 
 function getPokemonTypes(pokemonIndex) {
-  const currentPokemon = loadedPokemon[pokemonIndex];
+  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
   const typesArray = currentPokemon.types;
 
   let typesHTML = "";
@@ -204,15 +200,16 @@ function changeDialogPokemon(position) {
 
   if (currentPokemonIndex < 0) {
     currentPokemonIndex = 0;
-  } else if (currentPokemonIndex == loadedPokemon.length) {
-    currentPokemonIndex = loadedPokemon.length - 1;
+  } else if (currentPokemonIndex >= currentDisplayedPokemon.length) {
+    currentPokemonIndex = currentDisplayedPokemon.length - 1;
   }
 
   renderDetailedDialoge(currentPokemonIndex);
 }
 
 function fillBar() {
-  progressBar.style.width = "100%";
+  let progressBar = document.getElementById("progressBar");
+  if (progressBar) progressBar.style.width = "100%";
 }
 
 function showLoadingAnimation() {
@@ -225,9 +222,13 @@ function showLoadingAnimation() {
     loadMoreButtonRef.classList.remove("d_none");
     document.body.classList.remove("no-scroll");
   }, 3500);
+
   loadingScreenRef.classList.remove("d_none");
   loadMoreButtonRef.classList.add("d_none");
   document.body.classList.add("no-scroll");
-  progressBar.style.width = "0%";
-  setTimeout(fillBar, 10);
+
+  if (progressBar) {
+    progressBar.style.width = "0%";
+    setTimeout(fillBar, 10);
+  }
 }

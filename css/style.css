@@ -31,9 +31,6 @@
   --clr-accent-hover: hsla(359, 82%, 70%, 1);
   --clr-accent-shadow: hsla(359, 82%, 40%, 1);
 
-  /* Ränder */
-  --clr-border: hsla(210, 3%, 13%, 1);
-
   /* //----- GLOW VARIABLES -----// */
   --clr-glow-subtle: hsla(359, 82%, 63%, 0.1);
   --clr-glow-intense: hsla(359, 82%, 63%, 0.4);
@@ -182,6 +179,28 @@ h3 {
 
 .header-img {
   height: var(--fs-xxl);
+}
+
+.search-input {
+  width: 15rem;
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+  color: var(--clr-text-main);
+
+  background-color: var(--clr-bg-main);
+  border: 2px solid var(--clr-bg-surface);
+  border-radius: var(--spacing-sm);
+
+  background-image: url("../assets/icons/search-loupe.svg");
+  background-repeat: no-repeat;
+
+  background-size: var(--spacing-md);
+  background-position: right var(--spacing-sm) center;
+
+  padding-block: var(--spacing-sm);
+  padding-left: var(--spacing-sm);
+
+  padding-right: calc(var(--spacing-md) + var(--spacing-base));
 }
 
 .complete_header {

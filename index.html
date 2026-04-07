@@ -26,8 +26,13 @@
           <p>Timo"s Pokedex</p>
         </div>
         <div class="utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center utc_flex-gap-md">
-          <input type="text" />
-          <button class="btn search-button"></button>
+          <input
+            id="searchInput"
+            class="search-input"
+            type="text"
+            placeholder="Pokémon suchen..."
+            onkeyup="filterPokemon()"
+          />
         </div>
       </section>
     </header>
