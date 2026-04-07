@@ -80,6 +80,7 @@ function capitalizeFirstLetter(param) {
 }
 
 async function loadMorePokemon() {
+  showLoadingAnimation();
   await getPokemonFromAPI();
   renderPokemons();
 }
@@ -208,4 +209,18 @@ function changeDialogPokemon(position) {
   }
 
   renderDetailedDialoge(currentPokemonIndex);
+}
+
+function showLoadingAnimation() {
+  let loadMoreButtonRef = document.getElementById("btnLoadMore");
+  let loadingScreenRef = document.getElementById("loading-spinner");
+
+  setTimeout(() => {
+    loadingScreenRef.classList.add("d_none");
+    loadMoreButtonRef.classList.remove("d_none");
+    document.body.classList.remove("no-scroll");
+  }, 5000);
+  loadingScreenRef.classList.remove("d_none");
+  loadMoreButtonRef.classList.add("d_none");
+  document.body.classList.add("no-scroll");
 }
