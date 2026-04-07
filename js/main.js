@@ -129,7 +129,7 @@ function closeDialogBubbleProtection(event) {
 
 function getPokemonCrie(pokemonIndex) {
   const currentPokemon = loadedPokemon[pokemonIndex];
-  var audio = new Audio(currentPokemon.cries.latest);
+  let audio = new Audio(currentPokemon.cries.latest);
   audio.volume = 0.05;
   audio.play();
 }
