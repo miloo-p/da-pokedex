@@ -242,18 +242,3 @@ h3 {
   transform: translateX(calc(-50% + 1px)) translateY(1px);
   box-shadow: 0px 0px 0px var(--clr-bg-shadow);
 }
-
-.loading-overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-
-  z-index: 999;
-
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background-color: var(--clr-transparent-shadow);
-}

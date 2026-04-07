@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/list.css" />
     <link rel="stylesheet" href="./css/detail.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/loading-screen.css" />
 
     <script src="./js/template.js" defer></script>
     <script src="./js/main.js" defer></script>
@@ -35,7 +36,42 @@
         id="loading-spinner"
         class="loading-overlay utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center d_none"
       >
-        <img class="header-img" src="./assets/icons/pokeball.svg" alt="Logo der Bestell-App" />
+        <div class="loading-wrapper utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+          <img class="loading-center" src="./assets/img/loading-animation/pikatchu.svg" alt="Pikatchu" />
+          <img
+            class="loading-thunder thunder-last thunder-position-top"
+            src="./assets/img/loading-animation/1-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <img
+            class="loading-thunder thunder-early thunder-position-2"
+            src="./assets/img/loading-animation/2-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <img
+            class="loading-thunder thunder-late thunder-position-3"
+            src="./assets/img/loading-animation/3-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <img
+            class="loading-thunder thunder-late thunder-position-4"
+            src="./assets/img/loading-animation/4-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <img
+            class="loading-thunder thunder-late thunder-position-5"
+            src="./assets/img/loading-animation/5-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <img
+            class="loading-thunder thunder-early thunder-position-6"
+            src="./assets/img/loading-animation/6-thunder.svg"
+            alt="Thunder-Animation"
+          />
+          <div id="progressContainer">
+            <div id="progressBar"></div>
+          </div>
+        </div>
       </div>
       <section class="section-content-wrapper utc_flex-dir-col utc_flex-jc-sbetween utc_flex-ai-center">
         <img src="./assets/img/pokefont-curved.png" alt="" />
