@@ -1,8 +1,11 @@
+//#region Global Variables
 let loadedPokemon = [];
 let currentDisplayedPokemon = [];
 let nextUrl = "https://pokeapi.co/api/v2/pokemon?limit=20";
 let currentPokemonIndex = 0;
+//#endregion
 
+//#region Initialization & API
 async function init() {
   await getPokemonFromAPI();
   renderPokemons();
@@ -39,7 +42,9 @@ async function getPokemonDetailFromAPI(url) {
     console.log("Fehler in getPokemonDetailFromAPI:", error);
   }
 }
+//#endregion
 
+//#region Main List Rendering & Search
 function filterPokemon() {
   let search = document.getElementById("searchInput").value.toLowerCase();
 
@@ -82,7 +87,9 @@ async function loadMorePokemon() {
   await getPokemonFromAPI();
   renderPokemons();
 }
+//#endregion
 
+//#region Dialog Handling & Detail View
 function renderDetailedDialoge(pokemonIndex) {
   const showDetailedDialogeRef = document.getElementById("pokeDialoge");
   const currentPokemon = currentDisplayedPokemon[pokemonIndex];
@@ -207,7 +214,9 @@ function changeDialogPokemon(position) {
 
   renderDetailedDialoge(currentPokemonIndex);
 }
+//#endregion
 
+//#region Animations & Utility
 function fillBar() {
   let progressBar = document.getElementById("progressBar");
   if (progressBar) progressBar.style.width = "100%";
@@ -245,3 +254,4 @@ function getCardBackgroundTypes(pokemonIndex) {
     return `bg-dual t1-${type1} t2-${type2}`;
   }
 }
+//#endregion
