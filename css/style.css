@@ -19,7 +19,7 @@
   --clr-bg-main: hsla(0, 0%, 12%, 1);
   --clr-bg-surface: hsla(0, 0%, 16%, 1);
   --clr-bg-shadow: hsla(0, 0%, 5%, 1);
-  --clr-transparent-shadow: hsla(0, 0%, 5%, 0.7);
+  --clr-transparent-shadow: hsla(0, 0%, 5%, 0.95);
 
   /* Texte */
   --clr-text-main: hsla(0, 0%, 88%, 1);
