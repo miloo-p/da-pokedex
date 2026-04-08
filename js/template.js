@@ -8,7 +8,7 @@ function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes, bgClasses)
 
       <section class="main__poke-list-item-${i}">
         <div class="poke-image-container ${bgClasses} utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-          <img class="poke-item-picture" src="${PokePic}" alt="${PokeName}" />
+          <img class="poke-item-picture" loading="lazy" src="${PokePic}" alt="${PokeName}" />
         </div>
         
         <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
@@ -28,7 +28,7 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
                 <div
                   id="dialogPic"
                   class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-                  <img src="${animPokePic}" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})"></img>
+                  <img src="${animPokePic}" loading="lazy" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})"></img>
                 </div>
               </div>
               <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">
