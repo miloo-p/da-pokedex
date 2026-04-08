@@ -27,27 +27,39 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
               <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
                 <div
                   id="dialogPic"
-                  class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-                  <img src="${animPokePic}" loading="lazy" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})"></img>
+                  class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center"
+                >
+                  <img
+                    src="${animPokePic}"
+                    loading="lazy"
+                    class="dialogPicture"
+                    alt=""
+                    onclick="getPokemonCrie(${i})"
+                  />
                 </div>
               </div>
               <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">
-              <button class="pokedex-picture-btn" onclick="changeDialogPokemon(-1)"><</button>
-              <button class="pokedex-picture-btn" onclick="changeDialogPokemon(+1)">></button>
+                <button class="pokedex-picture-btn" onclick="changeDialogPokemon(-1)"><</button>
+                <button class="pokedex-picture-btn" onclick="changeDialogPokemon(+1)">></button>
               </div>
             </div>
-            <div class="pokedex-mid">
-            </div>
+            <div class="pokedex-mid"></div>
             <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
-                        <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm">
-              <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
-              <h3 id="pokeName-${i}" class="poke-ID">${pokeName}</h3>
-              <div class="poke-dialog-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-                ${pokeTypes}
+              <div
+                class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm"
+              >
+                <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
+                <h3 id="pokeName-${i}" class="poke-ID">${pokeName}</h3>
+                <div
+                  class="poke-dialog-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm"
+                >
+                  ${pokeTypes}
+                </div>
               </div>
-              </div>
-              <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-              </div>
+              <div
+                id="display-toggle-${i}"
+                class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center"
+              ></div>
 
               <div
                 class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm"
