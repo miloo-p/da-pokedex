@@ -22,7 +22,7 @@ function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes, bgClasses)
 function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
   return `
         <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
-          <div class="utc_flex-dir-row">
+          <div class="utc_flex-dir-row respnsive-dialog">
             <div class="pokedex-left">
               <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
                 <div
@@ -36,12 +36,12 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
               <button class="pokedex-picture-btn" onclick="changeDialogPokemon(+1)">></button>
               </div>
             </div>
-            <div class="pokedex-mid utc_flex-dir-col">
+            <div class="pokedex-mid">
             </div>
             <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
                         <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm">
               <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
-              <h3 id="pokeName-${i}">${pokeName}</h3>
+              <h3 id="pokeName-${i}" class="poke-ID">${pokeName}</h3>
               <div class="poke-dialog-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
                 ${pokeTypes}
               </div>
