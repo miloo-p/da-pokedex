@@ -111,4 +111,12 @@ function templateErrorMessage() {
     </h3>
   `;
 }
+
+function templateNotFoundMessage() {
+  return `
+    <h3 class="error-message-text">
+      No Pokémon found. Please check your spelling! Also: The search only works for already loaded pokemon!
+    </h3>
+  `;
+}
 //#endregion

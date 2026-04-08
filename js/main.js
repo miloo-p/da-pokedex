@@ -64,7 +64,6 @@ function filterPokemon() {
   let search = searchInputRef.value.toLowerCase();
 
   toggleSearchErrorClass(search.length, searchInputRef);
-  toggleLoadMoreButtonVisibility(search.length);
 
   if (search.length >= 3) {
     currentDisplayedPokemon = loadedPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(search));
@@ -72,23 +71,32 @@ function filterPokemon() {
     currentDisplayedPokemon = loadedPokemon;
   }
 
+  toggleLoadMoreButtonVisibility(search.length);
   renderPokemons();
 }
 
 function renderPokemons() {
-  const showPokemonListRef = document.getElementById("pokemon-list-container");
-  showPokemonListRef.innerHTML = "";
+  const container = document.getElementById("pokemon-list-container");
+  container.innerHTML = "";
+
+  if (currentDisplayedPokemon.length === 0) {
+    container.innerHTML = templateNotFoundMessage();
+    return;
+  }
 
   for (let i = 0; i < currentDisplayedPokemon.length; i++) {
-    const currentPokemon = currentDisplayedPokemon[i];
+    const p = currentDisplayedPokemon[i];
+    const name = capitalizeFirstLetter(p.name);
+    const pic = p.sprites.other["official-artwork"].front_default;
 
-    let pokeName = capitalizeFirstLetter(currentPokemon.name);
-    let pokeID = currentPokemon.id;
-    let pokePic = currentPokemon.sprites.other["official-artwork"].front_default;
-    let pokeTypes = getPokemonTypes(i);
-    let bgTypes = getCardBackgroundTypes(i);
-
-    showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic, pokeTypes, bgTypes);
+    container.innerHTML += templatePokemonCard(
+      i,
+      name,
+      p.id,
+      pic,
+      getPokemonTypes(i),
+      getCardBackgroundTypes(i),
+    );
   }
 }
 
@@ -98,19 +106,15 @@ function capitalizeFirstLetter(param) {
 
 async function loadMorePokemon() {
   showLoadingAnimation();
-
-  let searchInput = document.getElementById("searchInput");
-  if (searchInput) searchInput.value = "";
-
   await getPokemonFromAPI();
-  renderPokemons();
+  filterPokemon();
 }
 
 function toggleLoadMoreButtonVisibility(searchLength) {
   const loadMoreBtn = document.getElementById("btnLoadMore");
   if (!loadMoreBtn) return;
 
-  if (searchLength > 0) {
+  if (searchLength >= 3) {
     loadMoreBtn.classList.add("d_none");
   } else {
     loadMoreBtn.classList.remove("d_none");
