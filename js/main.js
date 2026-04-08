@@ -175,24 +175,17 @@ function renderDetaileMain(pokemonIndex) {
 }
 
 function renderDetaileStats(pokemonIndex) {
-  const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
-  const currentPokemon = currentDisplayedPokemon[pokemonIndex];
+  const pokemon = currentDisplayedPokemon[pokemonIndex];
+  const statLabels = ["HP", "ATK", "DEF", "SP-ATK", "SP-DEF", "SPEED"];
+  let allStatsHTML = "";
 
-  showDetaileMainRef.innerHTML = templatePokedexDisplayStats(pokemonIndex);
+  statLabels.forEach((label, i) => {
+    const percent = (pokemon.stats[i].base_stat / 255) * 100;
+    allStatsHTML += templateStatRow(label, percent);
+  });
 
-  let hpPercent = (currentPokemon.stats[0].base_stat / 255) * 100;
-  let atkPercent = (currentPokemon.stats[1].base_stat / 255) * 100;
-  let defPercent = (currentPokemon.stats[2].base_stat / 255) * 100;
-  let spAtkPercent = (currentPokemon.stats[3].base_stat / 255) * 100;
-  let spDefPercent = (currentPokemon.stats[4].base_stat / 255) * 100;
-  let speedPercent = (currentPokemon.stats[5].base_stat / 255) * 100;
-
-  document.getElementById(`bar-hp-${pokemonIndex}`).style.width = `${hpPercent}%`;
-  document.getElementById(`bar-atk-${pokemonIndex}`).style.width = `${atkPercent}%`;
-  document.getElementById(`bar-def-${pokemonIndex}`).style.width = `${defPercent}%`;
-  document.getElementById(`bar-spatk-${pokemonIndex}`).style.width = `${spAtkPercent}%`;
-  document.getElementById(`bar-spdef-${pokemonIndex}`).style.width = `${spDefPercent}%`;
-  document.getElementById(`bar-speed-${pokemonIndex}`).style.width = `${speedPercent}%`;
+  const container = document.getElementById(`display-toggle-${pokemonIndex}`);
+  container.innerHTML = templatePokedexStatTable(allStatsHTML);
 }
 
 function getPokemonAbilities(pokemonIndex) {
