@@ -23,6 +23,7 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
     <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
       <div class="utc_flex-dir-row respnsive-dialog">
         <div class="pokedex-left">
+          <button class="pokedex-exit-btn" onclick="closeDialog()"></button>
           <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
             <div id="dialogPic" class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
               <img src="${animPokePic}" loading="lazy" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})" />
@@ -34,7 +35,7 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
           </div>
         </div>
         <div class="pokedex-mid"></div>
-        <div class="pokedex-right utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
+        <div class="pokedex-right utc_flex-dir-col utc_flex-jc-sbetween utc_flex-ai-center">
           <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm">
             <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
             <h3 id="pokeName-${i}" class="poke-ID">${pokeName}</h3>
@@ -42,11 +43,10 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
               ${pokeTypes}
             </div>
           </div>
-          <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center"></div>
+          <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row"></div>
           <div class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm">
             <button class="pokedex-nav-btn" onclick="renderDetaileMain(${i})">Main</button>
             <button class="pokedex-nav-btn" onclick="renderDetaileStats(${i})">Stats</button>
-            <button class="pokedex-nav-btn">Evo Chain</button>
           </div>
         </div>
       </div>
@@ -58,14 +58,24 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
 //#region Details
 function templatePokedexDisplayMain(i, pokeHeight, pokeWeight, pokeExp, pokeAbilities) {
   return `
-    <table class="poke-main-table">
-      <tbody>
-        <tr><th scope="row">Height:</th><td>${pokeHeight} m</td></tr>
-        <tr><th scope="row">Weight:</th><td>${pokeWeight} kg</td></tr>
-        <tr><th scope="row">Base experience:</th><td>${pokeExp}</td></tr>
-        <tr><th scope="row">Abilities:</th><td>${pokeAbilities}</td></tr>
-      </tbody>
-    </table>
+    <ul class="poke-main-list">
+      <li class="main-list-item">
+        <span class="main-list-label">Height:</span>
+        <span class="main-list-value">${pokeHeight} m</span>
+      </li>
+      <li class="main-list-item">
+        <span class="main-list-label">Weight:</span>
+        <span class="main-list-value">${pokeWeight} kg</span>
+      </li>
+      <li class="main-list-item">
+        <span class="main-list-label">Base experience:</span>
+        <span class="main-list-value">${pokeExp}</span>
+      </li>
+      <li class="main-list-item">
+        <span class="main-list-label">Abilities:</span>
+        <span class="main-list-value">${pokeAbilities}</span>
+      </li>
+    </ul>
   `;
 }
 

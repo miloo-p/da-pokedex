@@ -128,17 +128,10 @@ dialog {
 
 .pokedex-display {
   width: 100%;
-  height: 18rem;
+  height: 17rem;
 
   background-color: var(--clr-bg-main);
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-
-  margin: 3rem auto;
-  margin-bottom: 0;
-}
-
-.pokedex-button-nav {
-  margin-top: 5rem;
 }
 
 .pokedex-picture-btn {
@@ -165,26 +158,32 @@ dialog {
   cursor: pointer;
 }
 
-.poke-main-table {
-  color: var(--clr-text-light);
+.poke-main-list {
+  list-style: none;
+  padding: var(--spacing-md);
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-table {
-  max-width: 15rem;
-}
-
-tr {
-  padding-inline: var(--spacing-lg);
-}
-
-th {
-  text-wrap: nowrap;
+.main-list-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-sm);
   text-align: left;
-  vertical-align: top;
 }
 
-td {
-  text-align: right;
+.main-list-label {
+  color: var(--clr-text-light);
+  font-size: var(--fs-base);
+  font-weight: bold;
+  line-height: 0.8;
+}
+
+.main-list-value {
+  color: var(--clr-text-light);
+  font-size: var(--fs-base);
+  line-height: 1.6rem;
 }
 
 .pokedex-controls {
@@ -215,7 +214,9 @@ td {
 }
 
 .poke-stat-table {
-  width: 15rem;
+  width: 100%;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
   color: var(--clr-text-light);
 }
 
@@ -223,12 +224,14 @@ td {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .stat-label {
   width: 3.5rem;
   text-align: left;
   margin: 0;
+  font-size: var(--fs-base);
 }
 
 .stat-bar-bg {
@@ -247,6 +250,7 @@ td {
 .poke-dialog-categories {
   padding: var(--spacing-sm);
   height: 100%;
+  margin-left: auto;
   & img {
     height: 3rem;
   }
@@ -260,4 +264,38 @@ td {
   & h3 {
     color: var(--clr-text-light);
   }
+}
+
+.pokedex-exit-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 10;
+  cursor: pointer;
+
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+
+  background-color: var(--clr-accent-shadow);
+  border: 0;
+}
+
+.pokedex-exit-btn::after {
+  content: "close";
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: var(--clr-bg-main);
+  font-size: var(--fs-base);
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pokedex-exit-btn:hover {
+  background-color: #ff0000;
+  box-shadow: 0 0 8px #ff4d4d;
 }
