@@ -1,3 +1,14 @@
+.poke-image-container {
+  width: 12rem;
+  height: 12rem;
+  margin: var(--spacing-md) auto;
+  border-radius: 50%;
+
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+
+  position: relative;
+}
+
 .poke-list-item {
   background-color: var(--clr-bg-shadow);
 
@@ -19,6 +30,143 @@
   }
 }
 
+.poke-item-picture {
+  transform: scale(1.2);
+}
+
 .poke-ID {
   color: var(--clr-accent-hover);
+}
+
+.bg-single {
+  background-color: var(--color-1);
+}
+.bg-dual {
+  background: linear-gradient(135deg, var(--color-1) 50%, var(--color-2) 50%);
+}
+
+.t1-normal {
+  --color-1: var(--type-normal);
+}
+.t2-normal {
+  --color-2: var(--type-normal);
+}
+
+.t1-fire {
+  --color-1: var(--type-fire);
+}
+.t2-fire {
+  --color-2: var(--type-fire);
+}
+
+.t1-water {
+  --color-1: var(--type-water);
+}
+.t2-water {
+  --color-2: var(--type-water);
+}
+
+.t1-electric {
+  --color-1: var(--type-electric);
+}
+.t2-electric {
+  --color-2: var(--type-electric);
+}
+
+.t1-grass {
+  --color-1: var(--type-grass);
+}
+.t2-grass {
+  --color-2: var(--type-grass);
+}
+
+.t1-ice {
+  --color-1: var(--type-ice);
+}
+.t2-ice {
+  --color-2: var(--type-ice);
+}
+
+.t1-fighting {
+  --color-1: var(--type-fighting);
+}
+.t2-fighting {
+  --color-2: var(--type-fighting);
+}
+
+.t1-poison {
+  --color-1: var(--type-poison);
+}
+.t2-poison {
+  --color-2: var(--type-poison);
+}
+
+.t1-ground {
+  --color-1: var(--type-ground);
+}
+.t2-ground {
+  --color-2: var(--type-ground);
+}
+
+.t1-flying {
+  --color-1: var(--type-flying);
+}
+.t2-flying {
+  --color-2: var(--type-flying);
+}
+
+.t1-psychic {
+  --color-1: var(--type-psychic);
+}
+.t2-psychic {
+  --color-2: var(--type-psychic);
+}
+
+.t1-bug {
+  --color-1: var(--type-bug);
+}
+.t2-bug {
+  --color-2: var(--type-bug);
+}
+
+.t1-rock {
+  --color-1: var(--type-rock);
+}
+.t2-rock {
+  --color-2: var(--type-rock);
+}
+
+.t1-ghost {
+  --color-1: var(--type-ghost);
+}
+.t2-ghost {
+  --color-2: var(--type-ghost);
+}
+
+.t1-dragon {
+  --color-1: var(--type-dragon);
+}
+.t2-dragon {
+  --color-2: var(--type-dragon);
+}
+
+.t1-dark {
+  --color-1: var(--type-dark);
+}
+.t2-dark {
+  --color-2: var(--type-dark);
+}
+
+.t1-steel {
+  --color-1: var(--type-steel);
+}
+.t2-steel {
+  --color-2: var(--type-steel);
+}
+
+.t1-fairy {
+  --color-1: var(--type-fairy);
+}
+.t2-fairy {
+  --color-2: var(--type-fairy);
 }

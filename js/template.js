@@ -1,22 +1,21 @@
-function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes) {
+function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes, bgClasses) {
   return `
-          <article class="poke-list-item" onclick="openDialog(${i})">
+    <article class="poke-list-item" onclick="openDialog(${i})">
+      <section class="header__poke-list-item-${i} utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+        <h3 class="poke-ID">#${PokeID}</h3>
+        <h3>${PokeName}</h3>
+      </section>
 
-            <section class="header__poke-list-item-${i} utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-              <h3 id="pokeID-${i}" class="poke-ID">#${PokeID}</h3>
-              <h3 id="pokeName-${i}">${PokeName}</h3>
-            </section>
-
-            <section class="main__poke-list-item-${i}">
-              <img id="pokeBigPicture-${i}" class="poke-item-picture" src="${PokePic}" alt="Bild von ${PokeName}" />
-              
-              <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-                ${pokeTypes}
-              </div>
-
-            </section>
-
-          </article>
+      <section class="main__poke-list-item-${i}">
+        <div class="poke-image-container ${bgClasses} utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
+          <img class="poke-item-picture" src="${PokePic}" alt="${PokeName}" />
+        </div>
+        
+        <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+          ${pokeTypes}
+        </div>
+      </section>
+    </article>
   `;
 }
 

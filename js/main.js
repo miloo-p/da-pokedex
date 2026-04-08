@@ -63,8 +63,9 @@ function renderPokemons() {
     let pokeID = currentPokemon.id;
     let pokePic = currentPokemon.sprites.other["official-artwork"].front_default;
     let pokeTypes = getPokemonTypes(i);
+    let bgTypes = getCardBackgroundTypes(i);
 
-    showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic, pokeTypes);
+    showPokemonListRef.innerHTML += templatePokemonCard(i, pokeName, pokeID, pokePic, pokeTypes, bgTypes);
   }
 }
 
@@ -230,5 +231,17 @@ function showLoadingAnimation() {
   if (progressBar) {
     progressBar.style.width = "0%";
     setTimeout(fillBar, 10);
+  }
+}
+
+function getCardBackgroundTypes(pokemonIndex) {
+  const types = currentDisplayedPokemon[pokemonIndex].types;
+  let type1 = types[0].type.name;
+
+  if (types.length === 1) {
+    return `bg-single t1-${type1}`;
+  } else {
+    let type2 = types[1].type.name;
+    return `bg-dual t1-${type1} t2-${type2}`;
   }
 }
