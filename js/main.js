@@ -64,6 +64,7 @@ function filterPokemon() {
   let search = searchInputRef.value.toLowerCase();
 
   toggleSearchErrorClass(search.length, searchInputRef);
+  toggleLoadMoreButtonVisibility(search.length);
 
   if (search.length >= 3) {
     currentDisplayedPokemon = loadedPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(search));
@@ -103,6 +104,17 @@ async function loadMorePokemon() {
 
   await getPokemonFromAPI();
   renderPokemons();
+}
+
+function toggleLoadMoreButtonVisibility(searchLength) {
+  const loadMoreBtn = document.getElementById("btnLoadMore");
+  if (!loadMoreBtn) return;
+
+  if (searchLength > 0) {
+    loadMoreBtn.classList.add("d_none");
+  } else {
+    loadMoreBtn.classList.remove("d_none");
+  }
 }
 //#endregion
 
