@@ -20,14 +20,7 @@ async function getPokemonFromAPI() {
     let pokemon = await pokemonAsHTTPResponse.json();
     nextUrl = pokemon.next;
 
-    for (let i = 0; i < pokemon.results.length; i++) {
-      let basicPokemon = pokemon.results[i];
-      let pokemonDetail = await getPokemonDetailFromAPI(basicPokemon.url);
-
-      if (pokemonDetail) {
-        loadedPokemon.push(pokemonDetail);
-      }
-    }
+    await loopPokemonList(pokemon.results);
 
     currentDisplayedPokemon = loadedPokemon;
     return true;
@@ -35,6 +28,16 @@ async function getPokemonFromAPI() {
     console.log("Fehler in getPokemonFromAPI:", error);
     renderErrorMessage();
     return false;
+  }
+}
+
+async function loopPokemonList(results) {
+  for (let i = 0; i < results.length; i++) {
+    let pokemonDetail = await getPokemonDetailFromAPI(results[i].url);
+
+    if (pokemonDetail) {
+      loadedPokemon.push(pokemonDetail);
+    }
   }
 }
 
@@ -237,24 +240,26 @@ function fillBar() {
 }
 
 function showLoadingAnimation() {
-  let loadMoreButtonRef = document.getElementById("btnLoadMore");
-  let loadingScreenRef = document.getElementById("loading-spinner");
-  let progressBar = document.getElementById("progressBar");
-
-  setTimeout(() => {
-    loadingScreenRef.classList.add("d_none");
-    loadMoreButtonRef.classList.remove("d_none");
-    document.body.classList.remove("no-scroll");
-  }, 3500);
+  const loadingScreenRef = document.getElementById("loading-spinner");
+  const loadMoreButtonRef = document.getElementById("btnLoadMore");
 
   loadingScreenRef.classList.remove("d_none");
   loadMoreButtonRef.classList.add("d_none");
   document.body.classList.add("no-scroll");
 
+  const progressBar = document.getElementById("progressBar");
   if (progressBar) {
     progressBar.style.width = "0%";
     setTimeout(fillBar, 10);
   }
+
+  setTimeout(hideLoadingAnimation, 3500);
+}
+
+function hideLoadingAnimation() {
+  document.getElementById("loading-spinner").classList.add("d_none");
+  document.getElementById("btnLoadMore").classList.remove("d_none");
+  document.body.classList.remove("no-scroll");
 }
 
 function getCardBackgroundTypes(pokemonIndex) {
