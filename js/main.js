@@ -7,8 +7,11 @@ let currentPokemonIndex = 0;
 
 //#region Initialization & API
 async function init() {
-  await getPokemonFromAPI();
-  renderPokemons();
+  let success = await getPokemonFromAPI();
+
+  if (success) {
+    renderPokemons();
+  }
 }
 
 async function getPokemonFromAPI() {
@@ -27,9 +30,11 @@ async function getPokemonFromAPI() {
     }
 
     currentDisplayedPokemon = loadedPokemon;
-    console.log("Aktueller Speicher:", loadedPokemon);
+    return true;
   } catch (error) {
     console.log("Fehler in getPokemonFromAPI:", error);
+    renderErrorMessage();
+    return false;
   }
 }
 
@@ -40,13 +45,22 @@ async function getPokemonDetailFromAPI(url) {
     return pokemonDetail;
   } catch (error) {
     console.log("Fehler in getPokemonDetailFromAPI:", error);
+    renderErrorMessage();
   }
+}
+
+function renderErrorMessage() {
+  const ErrorMsg = document.getElementById("pokemon-list-container");
+  ErrorMsg.innerHTML = templateErrorMessage();
 }
 //#endregion
 
 //#region Main List Rendering & Search
 function filterPokemon() {
-  let search = document.getElementById("searchInput").value.toLowerCase();
+  let searchInputRef = document.getElementById("searchInput");
+  let search = searchInputRef.value.toLowerCase();
+
+  toggleSearchErrorClass(search.length, searchInputRef);
 
   if (search.length >= 3) {
     currentDisplayedPokemon = loadedPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(search));
@@ -252,6 +266,14 @@ function getCardBackgroundTypes(pokemonIndex) {
   } else {
     let type2 = types[1].type.name;
     return `bg-dual t1-${type1} t2-${type2}`;
+  }
+}
+
+function toggleSearchErrorClass(searchLength, inputElement) {
+  if (searchLength > 0 && searchLength < 3) {
+    inputElement.classList.add("input-error");
+  } else {
+    inputElement.classList.remove("input-error");
   }
 }
 //#endregion

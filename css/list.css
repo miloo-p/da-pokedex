@@ -170,3 +170,14 @@
 .t2-fairy {
   --color-2: var(--type-fairy);
 }
+
+.error-message-text {
+  grid-column: 1 / -1;
+
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
+  color: var(--clr-text-main);
+
+  padding-block: var(--spacing-lg);
+}

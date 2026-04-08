@@ -130,3 +130,11 @@ function templatePokedexDisplaTypes(typeName) {
             <img class="categorie-badge" src="./assets/icons/types/${typeName}.svg">
    `;
 }
+
+function templateErrorMessage() {
+  return `
+    <h3 class="error-message-text">
+      https://pokeapi.co/ unreachable - please try again later.
+    </h3>
+  `;
+}

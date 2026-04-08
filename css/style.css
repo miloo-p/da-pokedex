@@ -281,3 +281,10 @@ h3 {
   transform: translateX(calc(-50% + 1px)) translateY(1px);
   box-shadow: 0px 0px 0px var(--clr-bg-shadow);
 }
+
+.input-error {
+  border: 2px solid var(--clr-accent) !important;
+  outline: none !important;
+
+  box-shadow: 0 0 10px rgba(194, 46, 40, 0.4) !important;
+}
