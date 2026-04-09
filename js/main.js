@@ -86,17 +86,16 @@ function renderPokemons() {
 
   for (let i = 0; i < currentDisplayedPokemon.length; i++) {
     const p = currentDisplayedPokemon[i];
-    const name = capitalizeFirstLetter(p.name);
-    const pic = p.sprites.other["official-artwork"].front_default;
+    const cardData = {
+      index: i,
+      name: capitalizeFirstLetter(p.name),
+      id: p.id,
+      pic: p.sprites.other["official-artwork"].front_default,
+      types: getPokemonTypes(i),
+      bgClasses: getCardBackgroundTypes(i),
+    };
 
-    container.innerHTML += templatePokemonCard(
-      i,
-      name,
-      p.id,
-      pic,
-      getPokemonTypes(i),
-      getCardBackgroundTypes(i),
-    );
+    container.innerHTML += templatePokemonCard(cardData);
   }
 }
 
@@ -126,19 +125,15 @@ function toggleLoadMoreButtonVisibility(searchLength) {
 function renderDetailedDialoge(pokemonIndex) {
   const showDetailedDialogeRef = document.getElementById("pokeDialoge");
   const currentPokemon = currentDisplayedPokemon[pokemonIndex];
+  const dialogData = {
+    index: pokemonIndex,
+    name: capitalizeFirstLetter(currentPokemon.name),
+    id: currentPokemon.id,
+    pic: currentPokemon.sprites.other.showdown.front_shiny,
+    types: getPokemonTypes(pokemonIndex),
+  };
 
-  let pokeName = capitalizeFirstLetter(currentPokemon.name);
-  let pokeID = currentPokemon.id;
-  let animPokePic = currentPokemon.sprites.other.showdown.front_shiny;
-  let pokeTypes = getPokemonTypes(pokemonIndex);
-
-  showDetailedDialogeRef.innerHTML = templateDetailedDialoge(
-    pokemonIndex,
-    pokeName,
-    pokeID,
-    animPokePic,
-    pokeTypes,
-  );
+  showDetailedDialogeRef.innerHTML = templateDetailedDialoge(dialogData);
 
   renderDetaileMain(pokemonIndex);
 }
@@ -176,18 +171,14 @@ function renderDetaileMain(pokemonIndex) {
   const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
   const currentPokemon = currentDisplayedPokemon[pokemonIndex];
 
-  let pokeHeight = currentPokemon.height;
-  let pokeWeight = currentPokemon.weight;
-  let pokeExp = currentPokemon.base_experience;
-  let pokeAbilities = getPokemonAbilities(pokemonIndex);
+  const mainData = {
+    height: currentPokemon.height,
+    weight: currentPokemon.weight,
+    exp: currentPokemon.base_experience,
+    abilities: getPokemonAbilities(pokemonIndex),
+  };
 
-  showDetaileMainRef.innerHTML = templatePokedexDisplayMain(
-    pokemonIndex,
-    pokeHeight,
-    pokeWeight,
-    pokeExp,
-    pokeAbilities,
-  );
+  showDetaileMainRef.innerHTML = templatePokedexDisplayMain(mainData);
 }
 
 function renderDetaileStats(pokemonIndex) {

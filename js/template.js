@@ -1,32 +1,32 @@
 //#region Main Components
-function templatePokemonCard(i, PokeName, PokeID, PokePic, pokeTypes, bgClasses) {
+function templatePokemonCard({ index, name, id, pic, types, bgClasses }) {
   return `
-    <article class="poke-list-item" onclick="openDialog(${i})">
-      <section class="header__poke-list-item-${i} utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-        <h3 class="poke-ID">#${PokeID}</h3>
-        <h3>${PokeName}</h3>
+    <article class="poke-list-item" onclick="openDialog(${index})">
+      <section class="header__poke-list-item-${index} utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
+        <h3 class="poke-ID">#${id}</h3>
+        <h3>${name}</h3>
       </section>
-      <section class="main__poke-list-item-${i}">
+      <section class="main__poke-list-item-${index}">
         <div class="poke-image-container ${bgClasses} utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-          <img class="poke-item-picture" loading="lazy" src="${PokePic}" alt="${PokeName}" />
+          <img class="poke-item-picture" loading="lazy" src="${pic}" alt="${name}" />
         </div>
         <div class="poke-item-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-          ${pokeTypes}
+          ${types}
         </div>
       </section>
     </article>
   `;
 }
 
-function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
+function templateDetailedDialoge({ index, name, id, pic, types }) {
   return `
-    <article class="poke-dialog-${i}" onclick="closeDialogBubbleProtection(event)">
+    <article class="poke-dialog-${index}" onclick="closeDialogBubbleProtection(event)">
       <div class="utc_flex-dir-row respnsive-dialog">
         <div class="pokedex-left">
           <button class="pokedex-exit-btn" onclick="closeDialog()"></button>
           <div class="pokedex-display-outer utc_flex-dir-col utc_flex-jc-center utc_flex-ai-center">
             <div id="dialogPic" class="pokedex-display-inner utc_flex-dir-row utc_flex-jc-center utc_flex-ai-center">
-              <img src="${animPokePic}" loading="lazy" class="dialogPicture" alt="" onclick="getPokemonCrie(${i})" />
+              <img src="${pic}" loading="lazy" class="dialogPicture" alt="" onclick="getPokemonCrie(${index})" />
             </div>
           </div>
           <div class="pokedex-controls utc_flex-dir-row utc_flex-jc-sbetween">
@@ -37,16 +37,16 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
         <div class="pokedex-mid"></div>
         <div class="pokedex-right utc_flex-dir-col utc_flex-jc-sbetween utc_flex-ai-center">
           <div class="display-pokemon-ident utc_flex-dir-row utc_flex-jc-start utc_flex-ai-center utc_flex-gap-sm">
-            <h3 id="pokeID-${i}" class="poke-ID">#${pokeID}</h3>
-            <h3 id="pokeName-${i}" class="poke-ID">${pokeName}</h3>
+            <h3 id="pokeID-${index}" class="poke-ID">#${id}</h3>
+            <h3 id="pokeName-${index}" class="poke-ID">${name}</h3>
             <div class="poke-dialog-categories utc_flex-dir-row utc_flex-ai-center utc_flex-jc-center utc_flex-gap-sm">
-              ${pokeTypes}
+              ${types}
             </div>
           </div>
-          <div id="display-toggle-${i}" class="pokedex-display utc_flex-dir-row"></div>
+          <div id="display-toggle-${index}" class="pokedex-display utc_flex-dir-row"></div>
           <div class="pokedex-button-nav utc_flex-dir-row utc_flex-jc-evenly utc_flex-ai-center utc_flex-gap-sm">
-            <button class="pokedex-nav-btn" onclick="renderDetaileMain(${i})">Main</button>
-            <button class="pokedex-nav-btn" onclick="renderDetaileStats(${i})">Stats</button>
+            <button class="pokedex-nav-btn" onclick="renderDetaileMain(${index})">Main</button>
+            <button class="pokedex-nav-btn" onclick="renderDetaileStats(${index})">Stats</button>
           </div>
         </div>
       </div>
@@ -56,24 +56,24 @@ function templateDetailedDialoge(i, pokeName, pokeID, animPokePic, pokeTypes) {
 //#endregion
 
 //#region Details
-function templatePokedexDisplayMain(i, pokeHeight, pokeWeight, pokeExp, pokeAbilities) {
+function templatePokedexDisplayMain({ height, weight, exp, abilities }) {
   return `
     <ul class="poke-main-list">
       <li class="main-list-item">
         <span class="main-list-label">Height:</span>
-        <span class="main-list-value">${pokeHeight} m</span>
+        <span class="main-list-value">${height} m</span>
       </li>
       <li class="main-list-item">
         <span class="main-list-label">Weight:</span>
-        <span class="main-list-value">${pokeWeight} kg</span>
+        <span class="main-list-value">${weight} kg</span>
       </li>
       <li class="main-list-item">
         <span class="main-list-label">Base experience:</span>
-        <span class="main-list-value">${pokeExp}</span>
+        <span class="main-list-value">${exp}</span>
       </li>
       <li class="main-list-item">
         <span class="main-list-label">Abilities:</span>
-        <span class="main-list-value">${pokeAbilities}</span>
+        <span class="main-list-value">${abilities}</span>
       </li>
     </ul>
   `;
