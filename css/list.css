@@ -10,6 +10,7 @@
 }
 
 .poke-list-item {
+  width: 15rem;
   background-color: var(--clr-bg-shadow);
 
   padding: var(--spacing-md);
