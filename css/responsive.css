@@ -7,6 +7,10 @@
     margin: auto auto;
   }
 
+  .display-pokemon-ident {
+    width: 100%;
+  }
+
   .respnsive-dialog {
     flex-direction: column;
   }

@@ -86,8 +86,7 @@ function renderPokemons() {
 
   for (let i = 0; i < currentDisplayedPokemon.length; i++) {
     const p = currentDisplayedPokemon[i];
-    const cardData = {
-      index: i,
+    const pokemonData = {
       name: capitalizeFirstLetter(p.name),
       id: p.id,
       pic: p.sprites.other["official-artwork"].front_default,
@@ -95,7 +94,7 @@ function renderPokemons() {
       bgClasses: getCardBackgroundTypes(i),
     };
 
-    container.innerHTML += templatePokemonCard(cardData);
+    container.innerHTML += templatePokemonCard(i, pokemonData);
   }
 }
 
@@ -125,15 +124,15 @@ function toggleLoadMoreButtonVisibility(searchLength) {
 function renderDetailedDialoge(pokemonIndex) {
   const showDetailedDialogeRef = document.getElementById("pokeDialoge");
   const currentPokemon = currentDisplayedPokemon[pokemonIndex];
-  const dialogData = {
-    index: pokemonIndex,
+
+  const pokemonData = {
     name: capitalizeFirstLetter(currentPokemon.name),
     id: currentPokemon.id,
     pic: currentPokemon.sprites.other.showdown.front_shiny,
     types: getPokemonTypes(pokemonIndex),
   };
 
-  showDetailedDialogeRef.innerHTML = templateDetailedDialoge(dialogData);
+  showDetailedDialogeRef.innerHTML = templateDetailedDialoge(pokemonIndex, pokemonData);
 
   renderDetaileMain(pokemonIndex);
 }
@@ -170,15 +169,14 @@ function getPokemonCrie(pokemonIndex) {
 function renderDetaileMain(pokemonIndex) {
   const showDetaileMainRef = document.getElementById(`display-toggle-${pokemonIndex}`);
   const currentPokemon = currentDisplayedPokemon[pokemonIndex];
-
-  const mainData = {
+  const pokemonDetails = {
     height: currentPokemon.height,
     weight: currentPokemon.weight,
     exp: currentPokemon.base_experience,
     abilities: getPokemonAbilities(pokemonIndex),
   };
 
-  showDetaileMainRef.innerHTML = templatePokedexDisplayMain(mainData);
+  showDetaileMainRef.innerHTML = templatePokedexDisplayMain(pokemonDetails);
 }
 
 function renderDetaileStats(pokemonIndex) {
