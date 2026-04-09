@@ -8,6 +8,10 @@ dialog {
 
   border: none;
 
+  width: 100%;
+  max-width: 48rem;
+  box-sizing: border-box;
+
   &::backdrop {
     backdrop-filter: blur(0.25rem);
     background-color: var(--clr-transparent-shadow);

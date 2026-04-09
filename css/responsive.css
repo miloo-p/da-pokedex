@@ -1,7 +1,12 @@
 @media screen and (max-width: 750px) {
   dialog {
     padding: var(--spacing-sm);
+
+    width: 100%;
+    max-width: 455px;
+    margin: auto auto;
   }
+
   .respnsive-dialog {
     flex-direction: column;
   }
@@ -66,6 +71,12 @@
     width: 100%;
     justify-content: center;
     gap: 0;
+  }
+
+  .poke-dialog-categories {
+    margin-left: 0;
+    margin-top: var(--spacing-sm);
+    width: 100%;
   }
 
   .poke-ID {
