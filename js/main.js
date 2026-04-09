@@ -262,7 +262,7 @@ function showLoadingAnimation() {
     setTimeout(fillBar, 10);
   }
 
-  setTimeout(hideLoadingAnimation, 3500);
+  setTimeout(hideLoadingAnimation, 2000);
 }
 
 function hideLoadingAnimation() {
